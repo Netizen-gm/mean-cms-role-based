@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:6
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - 27017:27017
+  backend:
+    build: ./backend
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/mean_cms
+      - JWT_ACCESS_SECRET=accesssecret123
+      - JWT_REFRESH_SECRET=refreshsecret123
+    ports:
+      - 4000:4000
+volumes:
+  mongo-data:

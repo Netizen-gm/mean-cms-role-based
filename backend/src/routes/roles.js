@@ -1,0 +1,10 @@
+const express = require('express')
+const router = express.Router()
+const ctrl = require('../controllers/roleController')
+const auth = require('../middleware/auth')
+const authorize = require('../middleware/authorize')
+router.get('/', auth, authorize('view'), ctrl.list)
+router.post('/', auth, authorize('create'), ctrl.create)
+router.put('/:id', auth, authorize('edit'), ctrl.update)
+router.get('/matrix', auth, authorize('view'), ctrl.accessMatrix)
+module.exports = router
