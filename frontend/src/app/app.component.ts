@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-@Component({ selector: 'app-root', template: `
+
+@Component({
+  selector: 'app-root',
+  template: `
 <nav>
   <a routerLink="/">Articles</a>
   <a routerLink="/login">Login</a>
@@ -7,5 +10,7 @@ import { Component } from '@angular/core';
 <div class="container">
   <router-outlet></router-outlet>
 </div>
-`, styles: [] })
+`,
+  styles: []
+})
 export class AppComponent {}
